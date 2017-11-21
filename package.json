@@ -1,0 +1,19 @@
+{
+  "name": "syaya",
+  "version": "0.0.1",
+  "description": "automation for wx.qq.com",
+  "main": "syaya.js",
+  "dependencies": {
+    "nightmare":"2.10.0",
+    "express": "^4.14.1",
+    "electron": "^1.7.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weixin-bot"
+  ],
+  "author": "rockee",
+  "license": "ISC"
+}
