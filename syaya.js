@@ -54,6 +54,17 @@ app.get('/api/bot/query_messages', async function(req, res){
   res.send(JSON.stringify(r));
 })
 
+app.post('/api/bot/send_txt_message', async function(req, res){
+  var user = req.body.user;
+  var msg = req.body.msg;
+  var r = {error:-1, msg:"send fail"};
+  r.status = await bot.send_txt_message(user, msg);
+  if(r.status){
+    r.error = 0;
+    r.msg = "success";
+  }
+  res.send(JSON.stringify(r));
+})
 
 var server = app.listen(8080, function () {
   var host = server.address().address
