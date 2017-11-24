@@ -54,6 +54,24 @@ app.get('/api/bot/query_messages', async function(req, res){
   res.send(JSON.stringify(r));
 })
 
+app.get('/api/bot/query_account', async function(req, res){
+  var r = {error:-1, info:{}};
+  r.info = await bot.query_account();
+  if(r.info){
+    r.error = 0;
+  }
+  res.send(JSON.stringify(r));
+})
+
+app.get('/api/bot/query_contacts', async function(req, res){
+  var r = {error:-1, contacts:{}};
+  r.contacts = await bot.query_contacts();
+  if(r.contacts){
+    r.error = 0;
+  }
+  res.send(JSON.stringify(r));
+})
+
 app.post('/api/bot/send_txt_message', async function(req, res){
   var user = req.body.user;
   var msg = req.body.msg;

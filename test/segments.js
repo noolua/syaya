@@ -14,7 +14,7 @@ function GetAllContacts(){
   return angular.element(document.body).injector().get('contactFactory').getAllContacts();
 }
 
-// SendMessage("@a88617f9eb30e615df0ba19b66531afcb8f3333db5d54567872acd0bf39ec3e0", "hello-中年油腻难: "+Date());
+// SendMessage("@a88617f9eb30e615df0ba19b66531afcb8f3333db5d54567872acd0bf39ec3e0", "hello-是啥: "+Date());
 function SendMessage(ToUserName, msg){
   var a = angular.element(document.querySelector("#editArea")).scope();
   var confFactory = angular.element(document.body).injector().get('confFactory')
