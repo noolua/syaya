@@ -810,7 +810,7 @@ webpackJsonp([1], [function(e, exports, t) {
       !1
     }),
     e.$on("message:add:success", function(t, a) {
-      a.MMPeerUserName !== c.getCurrentUserName() && (a._h || e.s(a, function(e) {
+      a.MMPeerUserName !== c.getCurrentUserName() && (a._h || e.heightCalc(a, function(e) {
         a._h = e
       }))
     }),
