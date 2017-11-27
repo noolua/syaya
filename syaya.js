@@ -1,7 +1,10 @@
+'use strict';
 
 var express = require('express');
 var bodyParser = require('body-parser');
 var bot = require("./lib/wxbot");
+var weather = require("./lib/weather");
+
 var app = express();
 
 // app.use(bodyParser.json({limit: '100kb'}));  //这里指定参数使用 json 格式
@@ -11,10 +14,25 @@ app.use(bodyParser.json({
 }));
 
 app.get('/api/version', function(req, res){
-  var rs = {error:0, version:"0.0.1", author:"rockee"};
-  res.send(JSON.stringify(rs));
+  var path = require("path");
+  var p = require(path.resolve(__dirname, "./", "package.json"));
+  var r = {error:-1};
+  if(p){
+    r.error = 0;
+    r.version = p.version;
+    r.description = p.description;
+    r.name = p.name;
+    r.author = p.author;
+  }
+  res.send(JSON.stringify(r));
 })
 
+app.get('/api/query_weather', async function(req, res){
+  var city = req.query.city || "北京";
+  console.log("query: ", city);
+  var r = await weather.query_weather(city);
+  res.send(JSON.stringify(r));
+})
 
 app.get('/api/bot/login', async function(req, res){
   var r = {error:-1, msg:"error for login"};

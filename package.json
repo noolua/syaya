@@ -1,9 +1,10 @@
 {
   "name": "syaya",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "automation for wx.qq.com",
   "main": "syaya.js",
   "dependencies": {
+    "request":"2.83.0",
     "nightmare":"2.10.0",
     "express": "^4.14.1",
     "electron": "^1.7.5"
