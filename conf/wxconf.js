@@ -1,4 +1,4 @@
-return {
+module.exports = {
   SP_CONTACT_FILE_HELPER: "filehelper",
   SP_CONTACT_NEWSAPP: "newsapp",
   SP_CONTACT_RECOMMEND_HELPER: "fmessage",

@@ -95,9 +95,9 @@ app.post('/api/bot/send_txt_message', async function(req, res){
   var msg = req.body.msg;
   var r = {error:-1, msg:"send fail"};
   r.status = await bot.send_txt_message(user, msg);
-  if(r.status){
+  if(r.status == 0){
     r.error = 0;
-    r.msg = "success";
+    r.msg = "send text message success";
   }
   res.send(JSON.stringify(r));
 })

@@ -1,9 +1,11 @@
 var request = require("request");
+var util = require("util");
+
 function doRequest(url) {
   return new Promise(function (resolve, reject) {
     request(url, function (error, res, body) {
       if (!error && res.statusCode == 200) {
-        resolve({error:0, body:body});
+        resolve({error:0, body:body, statusCode:res.statusCode});
       } else {
         reject({error:1, body:"doRequest fail."});
       }
@@ -54,4 +56,22 @@ async function mmm(){
   console.log(r);
 
 }
-mmm();
+// mmm();
+
+
+function demo_for_coroutine(){
+  var co = require("co");
+  var vec = ['a', 'c', 'e'];
+  vec.forEach(function(o, idx, arr){
+    co(function *(key, pos) {
+      var url = util.format("http://baidu.com/%d-%s", pos, key);
+      console.log("fetch, ", o);
+      var r = yield doRequest(url);
+      console.log(url, r.statusCode);
+    }, o, idx);
+  });
+}
+
+demo_for_coroutine();
+
+//sleep(5000);
