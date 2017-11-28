@@ -35,8 +35,9 @@ app.get('/api/query_weather', async function(req, res){
 })
 
 app.get('/api/bot/login', async function(req, res){
+  var debug = req.query.debug ? req.query.debug != "0" : true;
   var r = {error:-1, msg:"error for login"};
-  if(await bot.login(true) == true){
+  if(await bot.login(debug) == true){
     r.error = 0;
     r.qrcode = await bot.login_qrcode();
   }
@@ -75,7 +76,7 @@ app.get('/api/bot/query_messages', async function(req, res){
 app.get('/api/bot/query_account', async function(req, res){
   var r = {error:-1, info:{}};
   r.info = await bot.query_account();
-  if(r.info){
+  if(r.info && r.info.UserName){
     r.error = 0;
   }
   res.send(JSON.stringify(r));
