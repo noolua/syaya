@@ -39,6 +39,7 @@ app.get('/api/bot/login', async function(req, res){
   var r = {error:-1, msg:"error for login"};
   if(await bot.login(debug) == true){
     r.error = 0;
+    r.msg = "success";
     r.qrcode = await bot.login_qrcode();
   }
   res.send(JSON.stringify(r));
